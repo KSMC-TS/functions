@@ -1,2 +1,2 @@
-# script-snippets
+# Functions
 General functions and scripts for use within other scripts/modules.
