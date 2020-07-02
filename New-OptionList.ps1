@@ -20,7 +20,7 @@ function New-OptionList {
         Updated:        07/02/2020
         Created:        07/01/2020
         Author:         Zach Choate
-        URL:            https://raw.githubusercontent.com/KSMC-TS/functions/master/New-OptionList.ps1
+        URL:            https://raw.githubusercontent.com/KSMC-TS/functions/main/New-OptionList.ps1
 
     #>
 
