@@ -1,4 +1,3 @@
-
 function New-OptionList {
 
     <#
@@ -17,10 +16,11 @@ function New-OptionList {
     .NOTES
         Adapted from script on https://www.business.com/articles/powershell-interactive-menu/
 
-        Version:        1.0
-        Updated:        07/01/2020
+        Version:        2.0
+        Updated:        07/02/2020
         Created:        07/01/2020
         Author:         Zach Choate
+        URL:            https://raw.githubusercontent.com/KSMC-TS/functions/master/New-OptionList.ps1
 
     #>
 
@@ -42,7 +42,8 @@ function New-OptionList {
 
     }
     Write-Host "Q: Press 'Q' to quit."
-    $optionSelected = Read-Host "Please make a selection"
+    $validationSet = '^[1-{0}]$|^Q$' -f [regex]::escape($($n-1))
+    while(($optionSelected = Read-Host "Please make a selection") -notmatch $validationSet){}
     If($optionSelected -eq "q") {
         Write-Host "Quiting..."
         Exit
@@ -50,7 +51,7 @@ function New-OptionList {
     $optionSelected = $optionSelected-1
     $selectedValue = $optionsList[$optionSelected]
 
-    Write-Host "You selected $message $selectedValue. `nMoving on..."
+    Write-Host "`nYou selected $message $selectedValue. `nMoving on..."
     Return $selectedValue
 
 }
