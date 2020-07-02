@@ -1,8 +1,0 @@
-function Deploy-PSCore {
-    param ($listpath = "")
-    $computers = Get-Content $listpath
-    ForEach ($computer in $computers) {
-        Write-Output "Deploying PowerShellCore:Latest on $computer"
-        Invoke-Command -ComputerName $computer {iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI -Quiet"}
-    }
-}
