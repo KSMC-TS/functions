@@ -11,6 +11,9 @@ This PowerShell script reads all CSV files in a specified target directory,
 .PARAMETER TargetDirectory
 The directory where the source CSV files are located. Defaults to the current directory.
 
+.PARAMETER TargetFileFilter
+The filter for the source CSV files. Defaults to 'csv', which selects all CSV files in the target directory.
+
 .PARAMETER OutputDirectory
 The directory where the combined CSV file will be saved. Defaults to './output'.
 
@@ -37,14 +40,20 @@ param (
     $TargetDirectory = '.',
     [Parameter()]
     [string]
+    $TargetFileExtension = 'csv',
+    [Parameter()]
+    [string]
     $OutputDirectory = './output',
     [Parameter()]
     [string]
     $OutputFileSuffix = 'combined.csv'
 
+
 )
 
-$files = Get-ChildItem -Path $TargetDirectory -Filter *.csv
+$fileFilter = "*.$TargetFileExtension"
+
+$files = Get-ChildItem -Path $TargetDirectory -Filter $fileFilter
 
 $combinedCsv = $null
 
